@@ -37,7 +37,14 @@ def check_length(text: str) -> None:
         )
 
 
+def check_single_line(text: str) -> None:
+    """Refuse a text that spills onto a second line."""
+    if "\n" in text or "\r" in text:
+        raise SystemExit("entry text must be a single line")
+
+
 def main() -> None:
+    check_single_line(TEXT)
     check_length(TEXT)
     # The grader runs `python3 main.py` and reads /output/entry.txt.
     # An optional argument overrides the output path for local testing.
